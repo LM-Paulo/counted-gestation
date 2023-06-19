@@ -1,0 +1,11 @@
+dependencies {
+	compile project(":modules:couted:couted-api")
+
+	compileOnly group: "com.liferay.portal", name: "release.dxp.api"
+}
+
+buildService {
+	apiDir = "../couted-api/src/main/java"
+}
+
+group = "com.liferay.training.counted"

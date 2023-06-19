@@ -1,0 +1,6 @@
+Bundle-Name: couted-service
+Bundle-SymbolicName: com.liferay.training.counted.service
+Bundle-Version: 1.0.0
+Liferay-Require-SchemaVersion: 1.0.0
+Liferay-Service: true
+-dsannotations-options: inherit

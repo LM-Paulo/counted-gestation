@@ -1,0 +1,10 @@
+Bundle-Name: couted-api
+Bundle-SymbolicName: com.liferay.training.counted.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.training.counted.exception,\
+	com.liferay.training.counted.model,\
+	com.liferay.training.counted.service,\
+	com.liferay.training.counted.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../couted-service/service.xml
