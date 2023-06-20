@@ -14,6 +14,11 @@
 
 package com.liferay.training.counted.service;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.training.counted.model.Counted;
+
+import java.util.List;
+
 /**
  * Provides the remote service utility for Counted. This utility wraps
  * <code>com.liferay.training.counted.service.impl.CountedServiceImpl</code> and is an
@@ -33,14 +38,46 @@ public class CountedServiceUtil {
 	 *
 	 * Never modify this class directly. Add custom service methods to <code>com.liferay.training.counted.service.impl.CountedServiceImpl</code> and rerun ServiceBuilder to regenerate this class.
 	 */
+	public static Counted addcounted(
+			long groupId, String nome, String telefone, String email, int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().addcounted(
+			groupId, nome, telefone, email, idade, serviceContext);
+	}
+
+	public static Counted deleteContacto(long countedId)
+		throws PortalException {
+
+		return getService().deleteContacto(countedId);
+	}
+
+	public static Counted getCounted(long countedId) throws PortalException {
+		return getService().getCounted(countedId);
+	}
+
+	public static List<Counted> getCountedByGroupId(long grupoId) {
+		return getService().getCountedByGroupId(grupoId);
+	}
 
 	/**
 	 * Returns the OSGi service identifier.
 	 *
 	 * @return the OSGi service identifier
 	 */
-	public static java.lang.String getOSGiServiceIdentifier() {
+	public static String getOSGiServiceIdentifier() {
 		return getService().getOSGiServiceIdentifier();
+	}
+
+	public static Counted updatecounted(
+			long countedId, String nome, String telefone, String email,
+			int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().updatecounted(
+			countedId, nome, telefone, email, idade, serviceContext);
 	}
 
 	public static CountedService getService() {

@@ -58,6 +58,15 @@ public class CountedLocalServiceUtil {
 		return getService().addCounted(counted);
 	}
 
+	public static Counted addcounted(
+			long groupId, String nome, String telefone, String email, int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().addcounted(
+			groupId, nome, telefone, email, idade, serviceContext);
+	}
+
 	/**
 	 * Creates a new counted with the primary key. Does not add the counted to the database.
 	 *
@@ -332,6 +341,16 @@ public class CountedLocalServiceUtil {
 	 */
 	public static Counted updateCounted(Counted counted) {
 		return getService().updateCounted(counted);
+	}
+
+	public static Counted updatecounted(
+			long countedId, String nome, String telefone, String email,
+			int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws PortalException {
+
+		return getService().updatecounted(
+			countedId, nome, telefone, email, idade, serviceContext);
 	}
 
 	public static CountedLocalService getService() {

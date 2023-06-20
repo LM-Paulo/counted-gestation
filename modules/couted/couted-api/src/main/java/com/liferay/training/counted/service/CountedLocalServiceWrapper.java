@@ -47,6 +47,16 @@ public class CountedLocalServiceWrapper
 		return _countedLocalService.addCounted(counted);
 	}
 
+	@Override
+	public com.liferay.training.counted.model.Counted addcounted(
+			long groupId, String nome, String telefone, String email, int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _countedLocalService.addcounted(
+			groupId, nome, telefone, email, idade, serviceContext);
+	}
+
 	/**
 	 * Creates a new counted with the primary key. Does not add the counted to the database.
 	 *
@@ -372,6 +382,17 @@ public class CountedLocalServiceWrapper
 		com.liferay.training.counted.model.Counted counted) {
 
 		return _countedLocalService.updateCounted(counted);
+	}
+
+	@Override
+	public com.liferay.training.counted.model.Counted updatecounted(
+			long countedId, String nome, String telefone, String email,
+			int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _countedLocalService.updatecounted(
+			countedId, nome, telefone, email, idade, serviceContext);
 	}
 
 	@Override

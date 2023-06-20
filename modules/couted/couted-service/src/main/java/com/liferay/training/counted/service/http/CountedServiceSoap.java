@@ -14,9 +14,15 @@
 
 package com.liferay.training.counted.service.http;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.training.counted.service.CountedServiceUtil;
+
+import java.rmi.RemoteException;
+
 /**
  * Provides the SOAP utility for the
- * <code>com.liferay.training.counted.service.CountedServiceUtil</code> service
+ * <code>CountedServiceUtil</code> service
  * utility. The static methods of this class call the same methods of the
  * service utility. However, the signatures are different because it is
  * difficult for SOAP to support certain types.
@@ -54,4 +60,102 @@ package com.liferay.training.counted.service.http;
  * @generated
  */
 public class CountedServiceSoap {
+
+	public static com.liferay.training.counted.model.CountedSoap addcounted(
+			long groupId, String nome, String telefone, String email, int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws RemoteException {
+
+		try {
+			com.liferay.training.counted.model.Counted returnValue =
+				CountedServiceUtil.addcounted(
+					groupId, nome, telefone, email, idade, serviceContext);
+
+			return com.liferay.training.counted.model.CountedSoap.toSoapModel(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	public static com.liferay.training.counted.model.CountedSoap updatecounted(
+			long countedId, String nome, String telefone, String email,
+			int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws RemoteException {
+
+		try {
+			com.liferay.training.counted.model.Counted returnValue =
+				CountedServiceUtil.updatecounted(
+					countedId, nome, telefone, email, idade, serviceContext);
+
+			return com.liferay.training.counted.model.CountedSoap.toSoapModel(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	public static com.liferay.training.counted.model.CountedSoap[]
+			getCountedByGroupId(long grupoId)
+		throws RemoteException {
+
+		try {
+			java.util.List<com.liferay.training.counted.model.Counted>
+				returnValue = CountedServiceUtil.getCountedByGroupId(grupoId);
+
+			return com.liferay.training.counted.model.CountedSoap.toSoapModels(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	public static com.liferay.training.counted.model.CountedSoap getCounted(
+			long countedId)
+		throws RemoteException {
+
+		try {
+			com.liferay.training.counted.model.Counted returnValue =
+				CountedServiceUtil.getCounted(countedId);
+
+			return com.liferay.training.counted.model.CountedSoap.toSoapModel(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	public static com.liferay.training.counted.model.CountedSoap deleteContacto(
+			long countedId)
+		throws RemoteException {
+
+		try {
+			com.liferay.training.counted.model.Counted returnValue =
+				CountedServiceUtil.deleteContacto(countedId);
+
+			return com.liferay.training.counted.model.CountedSoap.toSoapModel(
+				returnValue);
+		}
+		catch (Exception exception) {
+			_log.error(exception, exception);
+
+			throw new RemoteException(exception.getMessage());
+		}
+	}
+
+	private static Log _log = LogFactoryUtil.getLog(CountedServiceSoap.class);
+
 }

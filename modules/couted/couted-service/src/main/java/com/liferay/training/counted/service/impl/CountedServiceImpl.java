@@ -16,12 +16,13 @@ package com.liferay.training.counted.service.impl;
 
 import com.liferay.portal.aop.AopService;
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.kernel.security.auth.PrincipalException;
 import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.training.counted.model.Counted;
 import com.liferay.training.counted.service.base.CountedServiceBaseImpl;
 
 import org.osgi.service.component.annotations.Component;
+
+import java.util.List;
 
 /**
  * @author Brian Wing Shun Chan
@@ -35,9 +36,25 @@ import org.osgi.service.component.annotations.Component;
 )
 public class CountedServiceImpl extends CountedServiceBaseImpl {
 
-//	public Counted addcounted(long groupId, String nome, String telefone, String email, int idade, ServiceContext serviceContext) throws PortalException{
-//
-//	}
+	public Counted addcounted(long groupId, String nome, String telefone, String email, int idade, ServiceContext serviceContext) throws PortalException{
+	   return countedLocalService.addcounted(groupId,nome,telefone,email,idade,serviceContext);
+	}
+
+	public Counted updatecounted(long countedId, String nome, String telefone, String email, int idade, ServiceContext serviceContext) throws PortalException{
+		return countedLocalService.updatecounted(countedId,nome,telefone,email,idade,serviceContext);
+	}
+
+	public List<Counted> getCountedByGroupId(long grupoId){
+		return countedPersistence.findBygroupId(grupoId);
+	}
+
+	public Counted getCounted(long countedId) throws PortalException{
+		return countedLocalService.getCounted(countedId);
+	}
+
+	public Counted deleteContacto(long countedId) throws PortalException {
+		return countedLocalService.deleteCounted(countedId);
+	}
 
 
 }

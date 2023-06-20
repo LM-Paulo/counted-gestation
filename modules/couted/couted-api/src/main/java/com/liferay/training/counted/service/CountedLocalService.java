@@ -27,6 +27,7 @@ import com.liferay.portal.kernel.search.Indexable;
 import com.liferay.portal.kernel.search.IndexableType;
 import com.liferay.portal.kernel.service.BaseLocalService;
 import com.liferay.portal.kernel.service.PersistedModelLocalService;
+import com.liferay.portal.kernel.service.ServiceContext;
 import com.liferay.portal.kernel.transaction.Isolation;
 import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
@@ -75,6 +76,11 @@ public interface CountedLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Counted addCounted(Counted counted);
+
+	public Counted addcounted(
+			long groupId, String nome, String telefone, String email, int idade,
+			ServiceContext serviceContext)
+		throws PortalException;
 
 	/**
 	 * Creates a new counted with the primary key. Does not add the counted to the database.
@@ -305,5 +311,10 @@ public interface CountedLocalService
 	 */
 	@Indexable(type = IndexableType.REINDEX)
 	public Counted updateCounted(Counted counted);
+
+	public Counted updatecounted(
+			long countedId, String nome, String telefone, String email,
+			int idade, ServiceContext serviceContext)
+		throws PortalException;
 
 }

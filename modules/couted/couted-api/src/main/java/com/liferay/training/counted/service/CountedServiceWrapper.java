@@ -30,6 +30,38 @@ public class CountedServiceWrapper
 		_countedService = countedService;
 	}
 
+	@Override
+	public com.liferay.training.counted.model.Counted addcounted(
+			long groupId, String nome, String telefone, String email, int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _countedService.addcounted(
+			groupId, nome, telefone, email, idade, serviceContext);
+	}
+
+	@Override
+	public com.liferay.training.counted.model.Counted deleteContacto(
+			long countedId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _countedService.deleteContacto(countedId);
+	}
+
+	@Override
+	public com.liferay.training.counted.model.Counted getCounted(long countedId)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _countedService.getCounted(countedId);
+	}
+
+	@Override
+	public java.util.List<com.liferay.training.counted.model.Counted>
+		getCountedByGroupId(long grupoId) {
+
+		return _countedService.getCountedByGroupId(grupoId);
+	}
+
 	/**
 	 * Returns the OSGi service identifier.
 	 *
@@ -38,6 +70,17 @@ public class CountedServiceWrapper
 	@Override
 	public String getOSGiServiceIdentifier() {
 		return _countedService.getOSGiServiceIdentifier();
+	}
+
+	@Override
+	public com.liferay.training.counted.model.Counted updatecounted(
+			long countedId, String nome, String telefone, String email,
+			int idade,
+			com.liferay.portal.kernel.service.ServiceContext serviceContext)
+		throws com.liferay.portal.kernel.exception.PortalException {
+
+		return _countedService.updatecounted(
+			countedId, nome, telefone, email, idade, serviceContext);
 	}
 
 	@Override
